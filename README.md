@@ -21,7 +21,7 @@ Checkpoint
 | ☐ | PUT         | `/api/tasks/:id` | Update a task |
 | ☐ | DELETE      | `/api/tasks/:id` | Delete a task |
 
-## ORM vocabulary
+## Part2 Sequelize and object-relational mapping 
 | Term        | In this lab                                                             |
 | ----------- | ----------------------------------------------------------------------- |
 | Model       | Task JavaScript definition                                              |
