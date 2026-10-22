@@ -55,3 +55,9 @@ Checkpoint
 | Denial of service (DoS)           | Rate-limit requests and configure proxy/load-balancer limits in deployment.                  |
 | Cross-site request forgery (CSRF) | Use `SameSite` cookies and CSRF protection for cookie-authenticated browser forms.           |
 | Session theft                     | Set `Secure`, `HttpOnly`, and `SameSite` cookie attributes, and use HTTPS/TLS in production. |
+
+## Part 6  Authenticate requests with Passport
+- Passport is authentication middleware. 
+- It identifies who is making a request; authorization is a separate decision about what that user may access. 
+- This lab uses Passport Local, bcrypt password hashing, and 
+- session cookies for a minimal demonstration.
