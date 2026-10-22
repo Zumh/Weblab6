@@ -45,3 +45,13 @@ Checkpoint
 | Cross-site scripting (XSS) | Treat stored text as untrusted and escape it when rendering it in a browser.      |
 | Code injection             | Never execute request values as code, shell commands, or dynamic module names.    |
 | Bad application state      | Validate types, ranges, and required fields before persistence.                   |
+
+## Part 5  Harden the Express application 
+
+| Threat                            | Practical treatment in this lab or deployment                                                |
+| --------------------------------- | -------------------------------------------------------------------------------------------- |
+| Cross-site scripting (XSS)        | Validate input, encode output in the client, and use Helmet headers to add browser defenses. |
+| SQL injection                     | Use Sequelize APIs and avoid concatenating user input into raw SQL queries.                  |
+| Denial of service (DoS)           | Rate-limit requests and configure proxy/load-balancer limits in deployment.                  |
+| Cross-site request forgery (CSRF) | Use `SameSite` cookies and CSRF protection for cookie-authenticated browser forms.           |
+| Session theft                     | Set `Secure`, `HttpOnly`, and `SameSite` cookie attributes, and use HTTPS/TLS in production. |
