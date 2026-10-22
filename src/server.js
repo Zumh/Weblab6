@@ -1,8 +1,10 @@
 require('dotenv').config(); 
-// helmet and headers
+// helmet and rate limit
 const helmet = require('helmet'); 
 const cors = require('cors'); 
 const rateLimit = require('express-rate-limit'); 
+const compression = require('compression'); 
+
 
 // express and routes
 const express = require('express'); 
@@ -15,6 +17,11 @@ app.use((req, res, next) => {
   next(); 
 }); 
 
+// helmets and rate limit are use here
+app.use(helmet()); 
+app.use(compression()); 
+app.use(cors({ origin: 'http://localhost:5173', credentials: true })); 
+app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 100, standardHeaders: true }));
 
 // Routing 
 app.use('/api/tasks', taskRoutes); 
