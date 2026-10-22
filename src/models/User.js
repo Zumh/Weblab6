@@ -1,7 +1,7 @@
 // import constants for database
-const { DataTypes } = require(`sequelize`);
+const { DataTypes } = require('sequelize');
 
-const sequelize = require('.../config/database');
+const sequelize = require('../config/database');
 
 module.exports = sequilize.define('User', {
 
