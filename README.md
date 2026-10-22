@@ -6,6 +6,7 @@ lab6 for Advanced web
 
 ## part 0 Prepare the workspace
 Checkpoint 
-☐  npm install finishes without errors. 
-☐  package.json contains a dev script. 
-☐  .env is excluded by .gitignore. 
+
+- [x] npm install finishes without errors.
+- [x] package.json contains a dev script.
+- [x].env is excluded by .gitignore. 
