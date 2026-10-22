@@ -2,6 +2,13 @@ require('dotenv').config();
 // express 
 const express = require('express'); 
 
+// import session
+const session = require('express-session');
+
+// import passport
+const passport = require('./config/passport');
+
+
 // helmet and rate limit
 const helmet = require('helmet'); 
 const cors = require('cors'); 
@@ -31,6 +38,15 @@ app.use((req, res, next) => {
   next(); 
 }); 
 
+// config sessions
+app.use(session({ 
+  secret: process.env.SESSION_SECRET, 
+  resave: false, 
+  saveUninitialized: false, 
+  cookie: { httpOnly: true, sameSite: 'lax', secure: false } 
+})); 
+app.use(passport.initialize()); 
+app.use(passport.session()); 
 
 // API Routing running in PORT 3000
 app.use('/api/tasks', taskRoutes); 
