@@ -1,0 +1,11 @@
+PORT=3000 
+SESSION_SECRET=replace-this-with-a-long-random-value 
+REDIS_URL=redis://localhost:6379
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+
+# SQLite database
+database.sqlite
