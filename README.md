@@ -20,3 +20,12 @@ Checkpoint
 | ☐ | POST        | `/api/tasks`     | Create a task |
 | ☐ | PUT         | `/api/tasks/:id` | Update a task |
 | ☐ | DELETE      | `/api/tasks/:id` | Delete a task |
+
+## ORM vocabulary
+| Term        | In this lab                                                             |
+| ----------- | ----------------------------------------------------------------------- |
+| Model       | Task JavaScript definition                                              |
+| Table       | Tasks in SQLite                                                         |
+| Instance    | One Task object / one row                                               |
+| Migration   | Versioned schema change; recommended for shared or production databases |
+| Association | A relationship such as User has many Tasks                              |
