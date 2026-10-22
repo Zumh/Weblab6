@@ -1,0 +1,21 @@
+POST http://localhost:3000/api/tasks
+Content-Type: application/json
+
+{
+    "title": "Finish Week 7 lab",
+    "priority": 1
+}
+###
+
+GET http://localhost:3000/api/tasks 
+Content-Type: application/json
+###
+
+PUT http://localhost:3000/api/tasks/1
+Content-Type: application/json
+
+{ "completed": true } 
+###
+
+DELETE http://localhost:3000/api/tasks/1
+Content-Type: application/json
