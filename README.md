@@ -29,3 +29,11 @@ Checkpoint
 | Instance    | One Task object / one row                                               |
 | Migration   | Versioned schema change; recommended for shared or production databases |
 | Association | A relationship such as User has many Tasks                              |
+
+## Part3 CRUD routes with Sequelize 
+| ☐ | Request               | Body or expected result                           |
+| - | --------------------- | ------------------------------------------------- |
+| ☐ | `POST /api/tasks`     | `{ "title": "Finish Week 7 lab", "priority": 1 }` |
+| ☐ | `GET /api/tasks`      | `200 OK` and an array containing the new task     |
+| ☐ | `PUT /api/tasks/1`    | `{ "completed": true }`                           |
+| ☐ | `DELETE /api/tasks/1` | `204 No Content`                                  |
