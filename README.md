@@ -9,4 +9,4 @@ Checkpoint
 
 - [x] npm install finishes without errors.
 - [x] package.json contains a dev script.
-- [x]\.env is excluded by .gitignore. 
+- [x] .env is excluded by .gitignore. 
