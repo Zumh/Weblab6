@@ -1,15 +1,23 @@
 require('dotenv').config(); 
+// express 
+const express = require('express'); 
+
 // helmet and rate limit
 const helmet = require('helmet'); 
 const cors = require('cors'); 
 const rateLimit = require('express-rate-limit'); 
 const compression = require('compression'); 
 
+// data base
+const sequelize = require('./config/database'); 
+require('./models/Task'); 
 
-// express and routes
-const express = require('express'); 
+
+// rules set here
 const taskRoutes = require('./routes/tasks'); 
  
+
+
 const app = express(); 
 app.use(express.json()); 
 app.use((req, res, next) => { 
@@ -33,9 +41,8 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Unexpected server error' }); 
 }); 
 
-const sequelize = require('./config/database'); 
-require('./models/Task'); 
- 
+
+// sequelize use here 
 sequelize.sync().then(() => { 
   app.listen(process.env.PORT || 3000, () => console.log('API running')); 
 });
