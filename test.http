@@ -26,3 +26,7 @@ POST http://localhost:3000/api/tasks
 Content-Type: application/json
 
 { "title": "x", "priority": 99 }
+
+###
+GET http://localhost:5173/api/tasks/health
+Content-Type: application/json
