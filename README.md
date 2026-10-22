@@ -15,7 +15,7 @@ Checkpoint
 
 | ✓ | HTTP method | Path             | Purpose       |
 | - | ----------- | ---------------- | ------------- |
-| - [x] | GET         | `/api/tasks`     | List tasks    |
+| [x] | GET         | `/api/tasks`     | List tasks    |
 | ☐ | GET         | `/api/tasks/:id` | Read one task |
 | ☐ | POST        | `/api/tasks`     | Create a task |
 | ☐ | PUT         | `/api/tasks/:id` | Update a task |
