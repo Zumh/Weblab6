@@ -1,4 +1,10 @@
 require('dotenv').config(); 
+// helmet and headers
+const helmet = require('helmet'); 
+const cors = require('cors'); 
+const rateLimit = require('express-rate-limit'); 
+
+// express and routes
 const express = require('express'); 
 const taskRoutes = require('./routes/tasks'); 
  
@@ -8,6 +14,9 @@ app.use((req, res, next) => {
   console.log(`${req.method} ${req.path}`); 
   next(); 
 }); 
+
+
+// Routing 
 app.use('/api/tasks', taskRoutes); 
  
 app.use((req, res) => res.status(404).json({ error: 'Route not found' })); 
