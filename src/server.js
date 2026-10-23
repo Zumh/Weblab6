@@ -8,6 +8,8 @@ const session = require('express-session');
 // import passport
 const passport = require('./config/passport');
 
+// import client
+const client = require('./config/redis');
 
 // helmet and rate limit
 const helmet = require('helmet'); 
@@ -68,7 +70,8 @@ app.use((err, req, res, next) => {
 // sequelize use here 
 // running API in PORT 3000 for backend API
 sequelize.sync()
-  .then(() => {
+  .then(async () => {
+    await client.connect();
     app.listen(process.env.PORT || 3000, () => {
       console.log('API running');
     });
