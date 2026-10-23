@@ -58,3 +58,25 @@ GET http://localhost:3000/api/auth/me
 
 ### Delete all
 DELETE http://localhost:3000/api/tasks
+
+## Part 6 Test
+### 1. GET all tasks — first request
+## should show source: database;
+GET http://localhost:3000/api/tasks
+
+### 2. GET all tasks — second request
+## should show source: cache
+GET http://localhost:3000/api/tasks
+
+### 3. Create a new task
+POST http://localhost:3000/api/tasks
+Content-Type: application/json
+
+{
+  "title": "Test Redis cache invalidation",
+  "completed": false,
+  "priority": 2
+}
+
+### 4. GET all tasks — after creating the task
+GET http://localhost:3000/api/tasks
