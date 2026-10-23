@@ -11,13 +11,13 @@ GET http://localhost:3000/api/tasks
 Content-Type: application/json
 ###
 
-PUT http://localhost:3000/api/tasks/1
+PUT http://localhost:3000/api/tasks/2
 Content-Type: application/json
 
 { "completed": true } 
 ###
 
-DELETE http://localhost:3000/api/tasks/1
+DELETE http://localhost:3000/api/tasks/2
 Content-Type: application/json
 
 ###
@@ -39,6 +39,7 @@ Content-Type: application/json
 
 {
   "email": "test@example.com",
+  "role": "admin",
   "password": "TestPassword123!"
 }
 
@@ -55,3 +56,6 @@ Content-Type: application/json
 ### 3. Check the current user
 ## expect 200 OK or 401 Unauthorized.
 GET http://localhost:3000/api/auth/me
+
+### Delete all
+DELETE http://localhost:3000/api/tasks

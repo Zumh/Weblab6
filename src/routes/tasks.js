@@ -3,6 +3,7 @@ const { validate } = require('../middleware/validate');
 const express = require('express'); 
 const Task = require('../models/Task'); 
 const router = express.Router(); 
+const { requireRole } = require('../middleware/requireRole');
 
 const taskRules = [ 
   body('title').trim().isLength({ min: 3, max: 120 }).withMessage('title must be 3-120 characters'), 
@@ -57,12 +58,28 @@ router.put('/:id', taskUpdateRules, async (req, res, next) => {
   } catch (err) { next(err); } 
 }); 
  
-router.delete('/:id', async (req, res, next) => { 
+router.delete('/:id',
+    async (req, res, next) => { 
   try { 
     const deleted = await Task.destroy({ where: { id: req.params.id } }); 
     if (!deleted) return res.status(404).json({ error: 'Task not found' }); 
     res.status(204).send(); 
   } catch (err) { next(err); } 
 }); 
- 
+
+router.delete(
+    '/', 
+    requireRole('admin'), 
+    async (req, res, next) => {
+  try {
+    const deleted = await Task.destroy({ where: {} });
+
+    res.status(200).json({
+      message: 'All tasks deleted successfully',
+      deletedCount: deleted
+    });
+  } catch (err) {
+    next(err);
+  }
+});
 module.exports = router; 
