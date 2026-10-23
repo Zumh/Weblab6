@@ -11,17 +11,17 @@ GET http://localhost:3000/api/tasks
 Content-Type: application/json
 ###
 
-PUT http://localhost:3000/api/tasks/2
+PUT http://localhost:3000/api/tasks/1
 Content-Type: application/json
 
 { "completed": true } 
 ###
-
-DELETE http://localhost:3000/api/tasks/2
+## delete 1 task at atime
+DELETE http://localhost:3000/api/tasks/1
 Content-Type: application/json
 
 ###
-
+## expect to return 400 Bad request
 POST http://localhost:3000/api/tasks 
 Content-Type: application/json
 
