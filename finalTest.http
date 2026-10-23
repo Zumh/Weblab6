@@ -1,0 +1,117 @@
+### 1. Health check
+## expect 200 OK
+GET http://localhost:3000/api/tasks/health
+Content-Type: application/json
+
+### 2. POST invalid task 
+## expect 400 Bad Request
+### Invalid task (missing required fields)
+POST http://localhost:3000/api/tasks
+Content-Type: application/json
+
+{
+  "title": ""
+}
+
+### 3. POST valid task
+## expect 201 Created
+### Create valid task
+POST http://localhost:3000/api/tasks
+Content-Type: application/json
+
+{
+  "title": "Complete API testing",
+  "description": "Test task creation and validation",
+  "completed": false
+}
+
+###4. GET missing task
+## expect 404 Not Found
+### Get task that does not exist
+GET http://localhost:3000/api/tasks/999999
+Content-Type: application/json
+
+### {
+###  "error": "Task not found"
+### }
+
+### 5. Security header check 
+## expect 200 OK
+## X-Content-Type-Options: nosniff
+### Check Helmet security headers
+GET http://localhost:3000/api/tasks/health
+
+### 6. GET /api/auth/me before login 
+## — expect 401 Unauthorized
+### Current user before login
+GET http://localhost:3000/api/auth/me
+
+### 7. Register, login, then GET /me
+
+### Register a new user
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "api-test@example.com",
+  "password": "TestPassword123!"
+}
+
+### Login
+## 200
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "api-test@example.com",
+  "password": "TestPassword123!"
+}
+
+### Get current user
+GET http://localhost:3000/api/auth/me
+Content-Type: application/json
+Cookie: connect.sid=connect.sid=s%3AsLeTwzHDbnoOl6yHNH1qNZRXfPD36FeB.dEPNHxwColjI8D9vHM2KL1KZEt9R2IWuEW%2F5fFrfMbA; Path=/; HttpOnly; SameSite=Lax
+
+### 8. Test Redis cache — 
+## database, then cache
+
+### First GET — expected database source
+GET http://localhost:3000/api/tasks
+
+### Second GET — 
+## expected cache source
+GET http://localhost:3000/api/tasks
+
+### 9. Create a task, then test cache invalidation
+### Step 1: Warm the cache
+GET http://localhost:3000/api/tasks
+
+### Step 2: Create a new task
+POST http://localhost:3000/api/tasks
+Content-Type: application/json
+
+{
+  "title": "Verify cache invalidation",
+  "description": "This task must appear in the next GET request",
+  "completed": false
+}
+
+### Step 3: Fetch tasks again
+GET http://localhost:3000/api/tasks
+
+### Docker database test
+
+GET http://localhost:3000/api/tasks
+
+
+### Create a task
+POST http://localhost:3000/api/tasks
+Content-Type: application/json
+
+{
+  "title": "Cache invalidation test",
+  "description": "Testing Redis cache"
+}
+
+### Get all tasks after creating one
+GET http://localhost:3000/api/tasks

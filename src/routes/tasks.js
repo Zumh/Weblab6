@@ -42,6 +42,10 @@ router.get('/', async (req, res, next) => {
     res.json({ source: 'database', data: tasks }); 
   } catch (err) { next(err); } 
 }); 
+
+router.get('/health', (req, res) => { 
+  res.json({ status: 'ok', service: 'task-api' }); 
+}); 
  
 router.get('/:id', async (req, res, next) => { 
   try { 
