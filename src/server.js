@@ -19,6 +19,11 @@ const compression = require('compression');
 const sequelize = require('./config/database'); 
 require('./models/Task'); 
 
+// import User model
+const User = require('./models/User');
+
+// authentication route
+const authRoutes = require('./routes/auth');
 
 // rules set here
 const taskRoutes = require('./routes/tasks'); 
@@ -49,6 +54,7 @@ app.use(passport.initialize());
 app.use(passport.session()); 
 
 // API Routing running in PORT 3000
+app.use('/api/auth', authRoutes);
 app.use('/api/tasks', taskRoutes); 
  
 app.use((req, res) => res.status(404).json({ error: 'Route not found' })); 

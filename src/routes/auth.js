@@ -1,4 +1,4 @@
-const outer = require('express').Router();
+const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 const User = require('../models/User');
@@ -6,7 +6,7 @@ const User = require('../models/User');
 router.post('/register', async(req, res, next) => {
     try{
         const passwordHash = await bcrypt.hash(req.body.password, 12);
-        const user = await User.create({ eamil: req.body.email, passwordHash });
+        const user = await User.create({ email: req.body.email, passwordHash });
         res.status(201).json({
             id: user.id,
             email: user.email
@@ -23,7 +23,7 @@ router.post('/login', passport.authenticate('local'),
 }));
 
 //get request me
-router.ge('/me', (req, res) => {
+router.get('/me', (req, res) => {
 
     if(!req.isAuthenticated()){
         return res.status(401).json({ error: 'Sign in required'});
@@ -32,5 +32,5 @@ router.ge('/me', (req, res) => {
     }
 });
 
-module.export = router;
+module.exports = router;
 
