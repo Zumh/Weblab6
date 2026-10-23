@@ -1,6 +1,8 @@
 # Weblab6
 lab6 for Advanced web
-
+## TEST CASES
+- vscode REST CLIENT extention is use for test cases.
+- .http files are test cases
 ## run docker if exists
 - docker --version 
 - docker run hello-world
@@ -11,9 +13,6 @@ lab6 for Advanced web
 - if not then run the following docker
 - docker run -d --name week7-redis -p 6379:6379 redis:7-alpine 
 - Or you can start "docker start week7-redis"
-
-## check if dock is running
-- docker ps
 
 ## run npm
 - cd week7-task-api
