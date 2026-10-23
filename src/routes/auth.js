@@ -6,7 +6,7 @@ const User = require('../models/User');
 router.post('/register', async(req, res, next) => {
     try{
         const passwordHash = await bcrypt.hash(req.body.password, 12);
-        const user = await User.create({ email: req.body.email, role: req.body.role, passwordHash });
+        const user = await User.create({ email: req.body.email,  passwordHash });
         res.status(201).json({
             id: user.id,
             role: user.role,
