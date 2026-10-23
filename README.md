@@ -62,7 +62,7 @@ Checkpoint
 - This lab uses Passport Local, bcrypt password hashing, and 
 - session cookies for a minimal demonstration.
 
-## Performance checklist 
+## Part7 Performance checklist 
 - [ ] Compression middleware is enabled for suitable HTTP responses. 
 - [ ] Handlers use async database calls rather than synchronous blocking work. 
 - [ ] The cache has a TTL and is invalidated after a task mutation. 
